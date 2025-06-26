@@ -1,32 +1,36 @@
 import AppName from "./components/AppName";
 import AddTodo from "./components/AddTodo";
 import "./App.css";
-//imports andc components of TodoItem1 & TodoItem2 are removed as we now use both through single TodoItem component
-// import TodoItem from "./components/TodoItem";
 import TodoItems from "./components/TodoItems";
+import { useState } from "react";
+import Message from "./components/Message";
 
 function App() {
-  const todoItems = [{
-   name:'Buy Milk',
-   dueDate:'4/10/2023',
-  },
+const [todoItems,setTodoItems]=useState([]);
 
-  {
-   name:'Go to College',
-   dueDate:'4/10/2023',
-  },
-
-  {
-   name:'do course work',
-   dueDate:'4/10/2023',
-  },
-
+const handleNewItem =(itemName,itemDueDate) => {
+ console.log(`New item added: ${itemName} Date:${itemDueDate}`)
+ const newTodoItems =[
+  ...todoItems,
+  {name: itemName, dueDate: itemDueDate},
 ];
+setTodoItems(newTodoItems);
+};
+
+const handleDeleteButton =(todoItemName,todoItemDate) =>{ //,todoItemDate
+  const newTodoItems =todoItems.filter((item) => item.name !==todoItemName )
+ setTodoItems(newTodoItems);
+}
+
+
   return (
     <center className="todo-container">
       <AppName />
-      <AddTodo />
-      <TodoItems todoItems={todoItems}></TodoItems>
+      <AddTodo onNewItem={handleNewItem}/>
+       {todoItems.length ===0 && <Message todoItems={todoItems}></Message>}
+      <TodoItems todoItems={todoItems} 
+      onDeleteClick={ handleDeleteButton}
+      ></TodoItems>
     
     </center>
   );
