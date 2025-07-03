@@ -5,11 +5,11 @@ import TodoItems from "./components/TodoItems";
 import { useState } from "react";
 import Message from "./components/Message";
 
+
 function App() {
 const [todoItems,setTodoItems]=useState([]);
 
 const handleNewItem =(itemName,itemDueDate) => {
- console.log(`New item added: ${itemName} Date:${itemDueDate}`)
  const newTodoItems =[
   ...todoItems,
   {name: itemName, dueDate: itemDueDate},
@@ -27,7 +27,7 @@ const handleDeleteButton =(todoItemName,todoItemDate) =>{ //,todoItemDate
     <center className="todo-container">
       <AppName />
       <AddTodo onNewItem={handleNewItem}/>
-       {todoItems.length ===0 && <Message todoItems={todoItems}></Message>}
+       {todoItems.length === 0 && <Message todoItems={todoItems}></Message>}
       <TodoItems todoItems={todoItems} 
       onDeleteClick={ handleDeleteButton}
       ></TodoItems>

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { BiSolidCommentAdd } from "react-icons/bi";
 
 function AddTodo({onNewItem}) {
 
@@ -30,7 +31,7 @@ const handleAddButtonClicked =()=>{
         </div>
         <div className="col-2">
           <button type="button" className="btn btn-success kg-button" onClick={handleAddButtonClicked}>
-            Add
+            <BiSolidCommentAdd />
           </button>
         </div>
       </div>
