@@ -25,7 +25,7 @@ const handleAddButtonClicked =(event)=>{
   const dueDate = dueDateElement.current.value;
   todoNameElement.current.value = "";
   dueDateElement.current.value = "";
- onNewItem(todoName,dueDate);
+  onNewItem(todoName,dueDate);
 //  setdueDate("");
 //  setTodoName("");
  }

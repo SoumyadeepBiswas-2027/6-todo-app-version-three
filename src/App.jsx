@@ -10,11 +10,25 @@ function App() {
 const [todoItems,setTodoItems]=useState([]);
 
 const handleNewItem =(itemName,itemDueDate) => {
- const newTodoItems =[
-  ...todoItems,
+//  const newTodoItems =[
+//  ...todoItems,
+//   {name: itemName, dueDate: itemDueDate},
+// ];
+// setTodoItems(newTodoItems); if we dont wanna set ,considering old values ,then use it,if not then follow instruction below
+// setTodoItems((currValue)=>{
+//  const newTodoItems =[
+//  ...currValue,
+//   {name: itemName, dueDate: itemDueDate},
+// ];
+// return newTodoItems;
+// });
+
+setTodoItems((currValue)=>
+ [
+ ...currValue,
   {name: itemName, dueDate: itemDueDate},
-];
-setTodoItems(newTodoItems);
+]);
+
 };
 
 const handleDeleteButton =(todoItemName,todoItemDate) =>{ //,todoItemDate
