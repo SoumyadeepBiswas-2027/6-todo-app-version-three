@@ -1,4 +1,5 @@
-import { useState } from "react";
+import {useRef} from "react";
+// import { useState} from "react";
 import { BiSolidCommentAdd } from "react-icons/bi";
 import { useContext } from "react";
 import { TodoItemsContext } from "../store/todo-items-store";
@@ -9,13 +10,10 @@ const {addNewItem} = useContext(TodoItemsContext);
 const [todoName,setTodoName] = useState("");
 const [dueDate,setdueDate] = useState("");
 
-const handleNameChange = (event) =>{
-setTodoName(event.target.value);
-};
+// const handleNameChange = (event) =>{
+// setTodoName(event.target.value);
 
-const handleDateChange = (event) =>{
- setdueDate(event.target.value);
-};
+// };
 
 const handleAddButtonClicked =()=>{
  addNewItem(todoName,dueDate);
@@ -25,19 +23,36 @@ const handleAddButtonClicked =()=>{
 
   return (
     <div className="container text-center">
-      <div className="row kg-row">
+      <form className="row kg-row"
+      onSubmit={handleAddButtonClicked}>
+        
         <div className="col-6">
-          <input type="text" placeholder="Enter Todo Here" value={todoName} onChange={ handleNameChange}/>
+          <input type="text" 
+          ref={todoNameElement}
+          placeholder="Enter Todo Here" 
+          //value={todoName} 
+          // onChange={ handleNameChange}
+          />
         </div>
+
         <div className="col-4">
-          <input type="date" value={dueDate} onChange={handleDateChange} />
+          <input type="date"
+          ref={ dueDateElement}
+           //value={dueDate} 
+          // onChange={handleDateChange} 
+           />
         </div>
+
         <div className="col-2">
-          <button type="button" className="btn btn-success kg-button" onClick={handleAddButtonClicked}>
+          <button  
+          // onSubmit={handleAddButtonClicked}
+          className="btn btn-success kg-button" 
+          //onClick={handleAddButtonClicked} 
+          >
             <BiSolidCommentAdd />
           </button>
         </div>
-      </div>
+      </form>
     </div>
   );
 }

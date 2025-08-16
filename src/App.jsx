@@ -14,8 +14,8 @@ const addNewItem =(itemName,itemDueDate) => {
  const newTodoItems =[
   ...todoItems,
   {name: itemName, dueDate: itemDueDate},
-];
-setTodoItems(newTodoItems);
+]);
+
 };
 
 const deleteItem =(todoItemName,todoItemDate) =>{ 
