@@ -1,8 +1,11 @@
 import { useState } from "react";
 import { BiSolidCommentAdd } from "react-icons/bi";
+import { useContext } from "react";
+import { TodoItemsContext } from "../store/todo-items-store";
 
-function AddTodo({onNewItem}) {
 
+function AddTodo({/*onNewItem*/}) { /*wherever onNewItem used it will call addNewItem there*/
+const {addNewItem} = useContext(TodoItemsContext); 
 const [todoName,setTodoName] = useState("");
 const [dueDate,setdueDate] = useState("");
 
@@ -15,7 +18,7 @@ const handleDateChange = (event) =>{
 };
 
 const handleAddButtonClicked =()=>{
- onNewItem(todoName,dueDate);
+ addNewItem(todoName,dueDate);
  setdueDate("");
  setTodoName("");
 }

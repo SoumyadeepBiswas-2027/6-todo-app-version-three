@@ -1,8 +1,10 @@
+import { useContext } from "react";
 import { FaDeleteLeft } from "react-icons/fa6";
+import { TodoItemsContext } from "../store/todo-items-store";
 
-function TodoItem({todoName,todoDate, onDeleteClick}) {
-  // let todoName = "Buy Milk";
-  // let todoDate = "4/10/2023";
+function TodoItem({todoName,todoDate, /*onDeleteClick*/}) {
+
+  const {deleteItem} =useContext(TodoItemsContext)
 
   return (
     <div className="container">
@@ -10,7 +12,8 @@ function TodoItem({todoName,todoDate, onDeleteClick}) {
         <div className="col-6">{todoName}</div>
         <div className="col-4">{todoDate}</div>
         <div className="col-2">
-          <button type="button" className="btn btn-danger kg-button" onClick={()=> onDeleteClick(todoName)}>
+          <button type="button" className="btn btn-danger kg-button" onClick={()=> deleteItem(todoName)}> 
+            {/* using deleteItem in place of onDeleteClick*/}
             <FaDeleteLeft />
           </button>
         </div>
