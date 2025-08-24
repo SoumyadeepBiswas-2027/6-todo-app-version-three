@@ -43,12 +43,16 @@ function App() {
   ...todoItems,
   {name: itemName, dueDate: itemDueDate},
  ];
+
 setTodoItems(newTodoItems); */
 //};
 
 //const deleteItem =(todoItemName) =>{ 
 //   const newTodoItems =todoItems.filter((item) => item.name !==todoItemName )
 //  setTodoItems(newTodoItems);
+//setTodoItems(newTodoItems); 
+//};
+
 
 //   const deleteItemAction ={
 //     type: "DELETE_ITEM",
@@ -60,20 +64,21 @@ setTodoItems(newTodoItems); */
 
 // }
 
-  return (
+//  return (
     // <TodoItemsContext.Provider 
     // value={{
     //   todoItems,
     //   dispatchTodoItems
     // }}
     // >
+     return (
     <TodoItemsContextProvider>
-    <center className="todo-container">
-      <AppName />
-      <AddTodo /> 
-      <Message/> 
-      <TodoItems/>
-    </center>
+      <center className="todo-container">
+        <AppName />
+        <AddTodo />
+        <Message />
+        <TodoItems />
+      </center>
     </TodoItemsContextProvider>
   );
 }
