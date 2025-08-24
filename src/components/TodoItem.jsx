@@ -7,6 +7,7 @@ function TodoItem({todoName,todoDate, /*onDeleteClick*/}) {
   const {deleteItem} =useContext(TodoItemsContext)
 
   return (
+
     <div className="container">
       <div className="row kg-row">
         <div className="col-6">{todoName}</div>
@@ -19,6 +20,7 @@ function TodoItem({todoName,todoDate, /*onDeleteClick*/}) {
         </div>
       </div>
     </div>
+
   );
 }
 

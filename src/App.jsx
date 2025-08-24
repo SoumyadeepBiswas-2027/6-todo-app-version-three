@@ -2,53 +2,79 @@ import AppName from "./components/AppName";
 import AddTodo from "./components/AddTodo";
 import "./App.css";
 import TodoItems from "./components/TodoItems";
-import { useState } from "react";
+//import { useReducer } from "react";
 import Message from "./components/Message";
-import { TodoItemsContext } from "./store/todo-items-store";
+import  TodoItemsContextProvider from "./store/todo-items-store";
 
+//in below useReducer we use (CurrState,action)
+// const todoItemsReducer =(currTodoItems, action) =>{
+//   let newTodoItems = currTodoItems;
+//   if(action.type ==='NEW_ITEM'){
+//      newTodoItems =[
+//   ...currTodoItems,
+//   {name: action.payload.itemName, dueDate:action.payload. itemDueDate},
+//  ];
+// //setTodoItems(newTodoItems);
+//   }else if(action.type =='DELETE_ITEM'){
+//     newTodoItems =currtodoItems.filter((item) => item.name !==action.payload.itemName )
+// /*setTodoItems(newTodoItems);*/  }
+
+//   return newTodoItems;
+// }
 
 function App() {
-const [todoItems,setTodoItems]=useState([]);
+//const [todoItems,setTodoItems]=useState([]);
+//const [todoItems, dispatchTodoItems] = useReducer(todoItemsReducer,[]);//useReducer(reducerMethod,Initial value)
 
-const addNewItem =(itemName,itemDueDate) => {
- const newTodoItems =[
+
+// const addNewItem =(itemName,itemDueDate) => {
+//   const newItemAction ={
+//     type: "NEW_ITEM",
+//     payload: {
+//       itemName,
+//       itemDueDate
+//     }
+//   };
+//   dispatchTodoItems(newItemAction);
+
+
+
+/* const newTodoItems =[
   ...todoItems,
   {name: itemName, dueDate: itemDueDate},
-]);
+ ];
+setTodoItems(newTodoItems); */
+//};
 
-};
+//const deleteItem =(todoItemName) =>{ 
+//   const newTodoItems =todoItems.filter((item) => item.name !==todoItemName )
+//  setTodoItems(newTodoItems);
 
-const deleteItem =(todoItemName,todoItemDate) =>{ 
-  const newTodoItems =todoItems.filter((item) => item.name !==todoItemName )
- setTodoItems(newTodoItems);
-}
+//   const deleteItemAction ={
+//     type: "DELETE_ITEM",
+//     payload: {
+//       itemName:todoItemName,
+//     }
+//   };
+//   dispatchTodoItems(deleteItemAction);
 
-// const defaultTodoItems = [{name: "buy coffee", dueDate:"tomorrow"}]
+// }
 
   return (
-    <TodoItemsContext.Provider 
-    value={{
-      // todoItems: todoItems,
-      // addNewItem: addNewItem,
-      // deleteItem: deleteItem,
-  //used above following as single objects as key and value pairs are same 
-      todoItems,
-      addNewItem,
-      deleteItem,
-
-    }}
-    >
+    // <TodoItemsContext.Provider 
+    // value={{
+    //   todoItems,
+    //   dispatchTodoItems
+    // }}
+    // >
+    <TodoItemsContextProvider>
     <center className="todo-container">
       <AppName />
-      <AddTodo /> {/*onNewItem={handleNewItem}} */}
-       {/* {todoItems.length === 0 && <Message></Message>} */}
-       {/* we made Message component dependent on todoItems  */}
-        <Message></Message> {/* removed prop todoItems ={todoItems} here and from TodoItems below as well */}
-        <TodoItems  
-        //  onDeleteClick={ handleDeleteButton}
-        ></TodoItems> 
+      <AddTodo /> 
+      <Message/> 
+      <TodoItems/>
     </center>
-    </TodoItemsContext.Provider>
+    </TodoItemsContextProvider>
   );
 }
 
